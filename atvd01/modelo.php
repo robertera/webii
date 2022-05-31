@@ -81,7 +81,3 @@ function update($new, $cpf)
         rename("bkp.txt", "pessoas.txt");
     }
 }
-
-function delete()
-{
-}

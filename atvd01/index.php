@@ -1,2 +1,2 @@
 <?php
-    echo "<script> window.location='viewMain.php' </script>";
+echo "<script> window.location='viewMain.php' </script>";

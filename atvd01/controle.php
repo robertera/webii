@@ -19,7 +19,7 @@ function rotas($url)
         if ($pessoa == null) {
             echo "<script> alert('CPF da pessoa NÃO ENCONTRADO!') </script>";
         } else {
-            $url = "viewAlterar.php?id=" . trim($dados[1]) . "&nome=" . $pessoa[0] . "&endereco=" . $pessoa[1] . "&telefone=" . trim($pessoa[2]);
+            $url = "viewAlterar.php?cpf=" . trim($dados[1]) . "&nome=" . $pessoa[0] . "&endereco=" . $pessoa[1] . "&telefone=" . trim($pessoa[2]);
             echo "<script> window.location='" . $url . "' </script>";
         }
     }
@@ -47,7 +47,6 @@ function cadastrar()
 
 function alterar()
 {
-
     // Monta o array
     $dados = array(
         $_POST['cpf'] => array(
@@ -58,6 +57,21 @@ function alterar()
     );
 
     update($dados, $_POST['cpf']);
+    echo "<script> window.location='viewMain.php' </script>";
+}
+
+function delete()
+{
+    // Monta o array
+    $dados = array(
+        $_POST['cpf'] => array(
+            "nome" => $_POST['nome'],
+            "endereco" => $_POST['endereco'],
+            "telefone" => $_POST['telefone']
+        )
+    );
+
+    delete($dados);
     echo "<script> window.location='viewMain.php' </script>";
 }
 
