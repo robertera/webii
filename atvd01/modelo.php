@@ -88,10 +88,13 @@ function update($new, $cpf)
 
         if($fp){
             foreach($pessoas as $chave => $dados){
-                if(trim($cpf) != trim($chave)){
-                    fputs($fp, $chave);
-                    $linha = $dados[0]."#".$dados[1]."#".$dados[2];
-                    fputs($fp,$linha);
+                if(!empty($dados)){
+                    if($cpf == trim($chave)){ }
+                    else{
+                        fputs($fp, $chave);
+                        $linha = $dados[0]."#".$dados[1]."#".$dados[2];
+                        fputs($fp,$linha);
+                    }
                 }
             }
         }

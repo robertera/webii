@@ -25,7 +25,7 @@ function rotas($url)
     }
     // Remover
     else if (strcmp($dados[0], "remover") == 0) {
-        delete($dados[1]);
+        delete(trim($dados[1]));
     }
 }
 
