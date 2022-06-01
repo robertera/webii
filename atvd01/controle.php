@@ -25,7 +25,7 @@ function rotas($url)
     }
     // Remover
     else if (strcmp($dados[0], "remover") == 0) {
-        echo "<script> window.location='viewRemover.php?cpf=" . $dados[1] . "' </script>";
+        delete($dados[1]);
     }
 }
 

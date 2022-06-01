@@ -80,4 +80,28 @@ function update($new, $cpf)
         unlink("pessoas.txt");
         rename("bkp.txt", "pessoas.txt");
     }
+
+    function delete($cpf){
+        $pessoas = select();
+        
+        $fp = fopen('bkp.txt', 'a+');
+
+        if($fp){
+            foreach($pessoas as $chave => $dados){
+                if(trim($cpf) != trim($chave)){
+                    fputs($fp, $chave);
+                    $linha = $dados[0]."#".$dados[1]."#".$dados[2];
+                    fputs($fp,$linha);
+                }
+            }
+        }
+    }
+
+    fclose($fp);
+    echo "<script> alert('[OK] Pessoa Excluida com Sucesso!') </script>";
+
+    unlink("pessoas.txt");
+    rename("bkp.txt", "pessoas.txt");
 }
+
+?>
