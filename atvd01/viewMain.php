@@ -14,7 +14,7 @@ if (!empty($_POST['form_submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade PHP</title>
+    <title>Pessoas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
@@ -24,7 +24,7 @@ if (!empty($_POST['form_submit'])) {
             <input type="hidden" name="form_submit" value="OK">
             <div class="row">
                 <div class="col">
-                    <h3 class="display-7 text-secondary"><b>Pessoas Fisicas</b></h3>
+                    <h3 class="display-7 text-secondary"><b>Pessoas</b></h3>
                 </div>
                 <div class="col d-flex justify-content-end">
                     <button type='submit' name='acao' value='cadastrar/0' class='btn btn-secondary'>
@@ -37,12 +37,12 @@ if (!empty($_POST['form_submit'])) {
             <div class="row">
                 <div class="col">
                     <table class="table align-middle caption-top table-striped">
-                        <caption>Tabela de <b>Pessoas Fisicas</b></caption>
+                        <caption>Tabela de <b>Pessoas</b></caption>
                         <thead>
                             <tr>
                                 <th scope="col" class="d-none d-md-table-cell">CPF</th>
                                 <th scope="col">NOME</th>
-                                <th scope="col" class="d-none d-md-table-cell">ENDERECO</th>
+                                <th scope="col" class="d-none d-md-table-cell">ENDEREÇO</th>
                                 <th scope="col" class="d-none d-md-table-cell">TELEFONE</th>
                                 <th scope="col">AÇÕES</th>
                             </tr>

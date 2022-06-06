@@ -2,6 +2,7 @@
 
 function select()
 {
+
     $pessoas = array();
     $fp = fopen('pessoas.txt', 'r');
 
@@ -23,9 +24,11 @@ function select()
 
 function select_where($cpf)
 {
+
     $pessoas = select();
+
     foreach ($pessoas as $chave => $dados) {
-        echo "$cpf=$chave<br>";
+        // echo "$cpf=$chave<br>";
         if (strcmp($cpf, trim($chave)) == 0) {
             return $dados;
         }
@@ -34,27 +37,29 @@ function select_where($cpf)
     return null;
 }
 
-function insert($pessoa)
+function insert($pessoas)
 {
+
     $fp = fopen('pessoas.txt', 'a+');
 
     if ($fp) {
-        foreach ($pessoa as $cpf => $dados) {
+        foreach ($pessoas as $cpf => $dados) {
             if (!empty($dados)) {
                 fputs($fp, $cpf);
                 fputs($fp, "\n");
-                $linha = $dados['nome'] . "#" . $dados['endereco'] . "#" . $dados['telefone'];
+                $linha = $dados['nome'] . "#" . $dados['endereço'] . "#" . $dados['telefone'];
                 fputs($fp, $linha);
                 fputs($fp, "\n");
             }
         }
         fclose($fp);
-        echo "<script> alert('[OK] Pessoa Fisica Cadastrada com Sucesso!') </script>";
+        echo "<script> alert('[OK] Pessoa Cadastrada com Sucesso!') </script>";
     }
 }
 
 function update($new, $cpf)
 {
+
     $pessoas = select();
 
     $fp = fopen('bkp.txt', 'a+');
@@ -66,7 +71,7 @@ function update($new, $cpf)
                 if ($cpf == trim($chave)) {
                     foreach ($new as $new_cpf => $new_dados) {
                         if (!empty($new_dados)) {
-                            $linha = $new_dados['nome'] . "#" . $new_dados['endereco'] . "#" . $new_dados['telefone'] . "\n";
+                            $linha = $new_dados['nome'] . "#" . $new_dados['endereço'] . "#" . $new_dados['telefone'] . "\n";
                         }
                     }
                 } else
@@ -75,36 +80,33 @@ function update($new, $cpf)
             }
         }
         fclose($fp);
-        echo "<script> alert('[OK] Pessoa Alterada com Sucesso!') </script>";
+        echo "<script> alert('[OK] Pessoa Alterado com Sucesso!') </script>";
 
         unlink("pessoas.txt");
         rename("bkp.txt", "pessoas.txt");
     }
+}
 
-    function delete($cpf){
-        $pessoas = select();
-        
-        $fp = fopen('bkp.txt', 'a+');
+function delete($cpf)
+{
+    $pessoas = select();
 
-        if($fp){
-            foreach($pessoas as $chave => $dados){
-                if(!empty($dados)){
-                    if($cpf == trim($chave)){ }
-                    else{
-                        fputs($fp, $chave);
-                        $linha = $dados[0]."#".$dados[1]."#".$dados[2];
-                        fputs($fp,$linha);
-                    }
+    $fp = fopen('bkp.txt', 'a+');
+
+    if ($fp) {
+        foreach ($pessoas as $chave => $dados) {
+            if (!empty($dados)) {
+                if (trim($cpf) != trim($chave)) {
+                    fputs($fp, $chave);
+                    $linha = $dados[0] . "#" . $dados[1] . "#" . $dados[2];
+                    fputs($fp, $linha);
                 }
             }
         }
     }
-
     fclose($fp);
     echo "<script> alert('[OK] Pessoa Excluida com Sucesso!') </script>";
 
     unlink("pessoas.txt");
     rename("bkp.txt", "pessoas.txt");
 }
-
-?>
