@@ -51,7 +51,7 @@ class PessoaController
 
         if (!empty($pessoa)) {
 
-            $url = "../views/viewAlterar.php?id=$pessoa->cpf";
+            $url = "../views/viewAlterar.php?cpf=$pessoa->cpf";
             $url .= "&nome=$pessoa->nome";
             $url .= "&endereco=$pessoa->endereco";
             $url .= "&telefone=$pessoa->telefone";
@@ -64,7 +64,6 @@ class PessoaController
     {
         $data = array(
             "nome" => $_POST["nome"],
-            "cpf" => $_POST["cpf"],
             "endereco" => $_POST["endereco"],
             "telefone" => $_POST["telefone"]
         );
@@ -72,9 +71,9 @@ class PessoaController
         echo "<script>window.location='../views/viewMain.php'</script>";
     }
 
-    public static function destroy()
+    public static function destroy($cpf)
     {
-
+        Pessoa::destroy($cpf);
         echo "<script>window.location='../views/viewMain.php'</script>";
     }
 
