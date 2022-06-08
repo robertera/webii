@@ -3,7 +3,7 @@
 include_once '../global.php';
 
 if (!empty($_POST['form_submit'])) {
-    PessoaController::store();
+    PessoaController::update();
 }
 ?>
 
